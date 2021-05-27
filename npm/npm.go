@@ -14,6 +14,7 @@ import (
 	"github.com/pquerna/ffjson/ffjson"
 	"github.com/sirupsen/logrus"
 	"github.com/valyala/fasthttp"
+	"github.com/valyala/fasthttp/fasthttpproxy"
 
 	"path"
 
@@ -27,8 +28,18 @@ type NPMClient struct {
 }
 
 func NewNPMClient(registry string, path string) *NPMClient {
+	proxy_val, proxy_present := os.LookupEnv("http_proxy")
+
 	httpClient := &fasthttp.Client{
 		Name: "PocketNPM Client",
+	}
+
+	if proxy_present {
+		prox := strings.TrimPrefix(proxy_val, "http://")
+		httpClient = &fasthttp.Client{
+			Name: "PocketNPM Client",
+			Dial: fasthttpproxy.FasthttpHTTPDialer(prox),
+		}
 	}
 
 	client := &NPMClient{
