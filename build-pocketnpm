@@ -1,0 +1,57 @@
+docker run --rm -ti --workdir /go/src --user $(id -u ${USER}):$(id -g ${USER}) --volume ${PWD}:/go/src golang:alpine sh
+go mod init github.com/ssut/pocketnpm
+go mod tidy
+go build -o pocketnpm .
+
+pocketnpm init
+
+
+[0000] DEBUG Activated debug mode
+[0000] DEBUG Directory does not exist: /go/src/registry
+[0000] DEBUG Directory has been created: /go/src/registry
+[0000] DEBUG Database has not been initialized. Init..
+[0000] DEBUG Loading stats..
+[0000] DEBUG Status for database Documents=0 Files=0 Marks=0 Packages=0
+[0000]  INFO State marked as first run marked=0 sequence=0
+[0000] DEBUG Get: https://replicate.npmjs.com/registry/_all_docs?update_seq=true
+[0218] DEBUG Unmarshaling the entire document (175662163 B)
+[0222]  INFO Total documents found: 1619997
+[0222] DEBUG Store all documents by given properties
+[0222] DEBUG Putting packages..
+[0247] DEBUG Succeed
+[0249] DEBUG Packages to queue: 1619997
+[0249] DEBUG Starting 20 workers
+[0249]  INFO Mirroring: -keyboardevent worker=9
+[0249]  INFO Mirroring: -reaume worker=11
+[0249]  INFO Mirroring: -tompan-reacttemplate worker=12
+[0249]  INFO Mirroring: -liuxin worker=10
+[0249]  INFO Mirroring: -unete-cli-typescript worker=13
+[0249]  INFO Mirroring: -tlecoeuv worker=5
+[0249]  INFO Mirroring: -users-random-messages worker=15
+[0249]  INFO Mirroring: -wulinlong9.10rk worker=16
+[0249]  INFO Mirroring: 0 worker=17
+[0249]  INFO Mirroring: - worker=0 [249]  INFO Mirroring: 0- worker=18
+[0249]  INFO Mirroring: 0---top worker=19
+[0249]  INFO Mirroring: 0--0double worker=3
+[0249]  INFO Mirroring: 0-100 worker=4
+[0249]  INFO Mirroring: -lidonghui worker=2
+[0249]  INFO Mirroring: -gordey-dash worker=1
+[0249]  INFO Mirroring: --file--1 worker=8
+[0249]  INFO Mirroring: -f0re7tpunk-resume worker=14
+[0249]  INFO Mirroring: 0-1-project worker=6
+[0249]  INFO Mirroring: 0-24 worker=7
+[0250] DEBUG Get: https://replicate.npmjs.com/registry/0-24
+[0250] DEBUG Total files to download: 1 name=0-24 worker=7
+[0250] DEBUG Get: https://replicate.npmjs.com/registry/-unete-cli-typescript
+[0250] DEBUG Total files to download: 1 name=-unete-cli-typescript worker=13
+[0250] DEBUG Get: https://replicate.npmjs.com/registry/0
+[0250] DEBUG Total files to download: 1 name=0 worker=17
+[0250] DEBUG Get: https://replicate.npmjs.com/registry/-reaume
+[0250] DEBUG Total files to download: 2 name=-reaume worker=11
+[0250] DEBUG Get: https://replicate.npmjs.com/registry/0--0double
+[0250] DEBUG Total files to download: 1 name=0--0double worker=3
+[0250] DEBUG Get: https://replicate.npmjs.com/registry/-keyboardevent
+[0250] DEBUG Total files to download: 1 name=-keyboardevent worker=9
+[0250] DEBUG Get: https://replicate.npmjs.com/registry/0---top
+[0250] DEBUG Total files to download: 1 name=0---top worker=19
+
